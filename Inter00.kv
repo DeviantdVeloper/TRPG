@@ -1,18 +1,116 @@
 #:kivy 1.8.0
 #:import random random
 
-<ScatterTextWidget>:
+<InterScreenWidget>:
 	orientation: 'vertical'
-	TextInput:
-		id: myTextInput
-		font_size: 75
-		size_hint_y: None
-		height: 100
-		text: 'default'
-		on_text: my_label.color = [random.random() for i in range(3)] + [1]
-	FloatLayout:
-		Scatter:
-			Label:
-				id: my_label
-				text: myTextInput.text
-				font_size: 100
+	canvas.before:
+		Color:
+			rgba: 0, 0, 0, 1
+		Rectangle:
+			pos: self.pos
+			size: self.size
+	BoxLayout:
+		id: optionsBox
+		size_hint: None, None
+		size: root.size[0], 35
+		orientation: 'horizontal'
+		canvas.before:
+			Color:
+				rgba: 0.5, 0.5, 0.5, 1
+			Rectangle:
+				pos: self.pos
+				size: self.size
+		Label:
+			text: 'options'
+			font_size: 20
+			color: 1,1,1,1
+			size: self.texture_size
+	BoxLayout:
+		id: playAreaBox
+		orientation: 'horizontal'
+		canvas.before:
+			Color:
+				rgba: 0, 0, 0, 1
+			Rectangle:
+				pos: self.pos
+				size: self.size
+		BoxLayout:
+			id: statsAndGraphicBox
+			size_hint: None, None
+			size: 200, playAreaBox.size[1]
+			orientation: 'vertical'
+			canvas:
+				Color:
+					rgba: 0, 0, 0, 1
+				Rectangle:
+					pos: self.pos
+					size: self.size
+			BoxLayout:
+				id: statsBox
+				orientation: 'vertical'
+				canvas:
+					Color:
+						rgba: 0, 1, 0, 0.5
+					Rectangle:
+						pos: self.pos
+						size: self.size
+				Label:
+					text: 'stats'
+					font_size: 45
+					color: 1,1,1,1
+					size: self.texture_size
+			BoxLayout:
+				id: graphicsBox
+				size_hint: None, None
+				size: 200, 200
+				orientation: 'vertical'
+				canvas:
+					Color:
+						rgba: 1, 0, 0, 0.5
+					Rectangle:
+						pos: self.pos
+						size: self.size
+				Label:
+					text: 'graphic'
+					font_size: 45
+					color: 1,1,1,1
+					size: self.texture_size
+		BoxLayout:
+			id: contentAndButtonsBox
+			orientation: 'vertical'
+			canvas:
+				Color:
+					rgba: 0, 0, 0, 1
+				Rectangle:
+					pos: self.pos
+					size: self.size
+			BoxLayout:
+				id: contentBox
+				orientation: 'vertical'
+				canvas:
+					Color:
+						rgba: 1, 1, 1, 1
+					Rectangle:
+						pos: self.pos
+						size: self.size
+				Label:
+					text: 'content'
+					font_size: 45
+					color: 0,0,0,1
+					size: self.texture_size
+			BoxLayout:
+				id: buttonsBox
+				size_hint: None, None
+				size: contentAndButtonsBox.size[0], 200
+				orientation: 'vertical'
+				canvas:
+					Color:
+						rgba: 0, 0, 1, 1
+					Rectangle:
+						pos: self.pos
+						size: self.size
+				Label:
+					text: 'buttons'
+					font_size: 45
+					color: 1,1,1,1
+					size: self.texture_size

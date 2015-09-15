@@ -15,12 +15,18 @@ from kivy.uix.floatlayout import FloatLayout
 from kivy.uix.textinput import TextInput
 from kivy.uix.boxlayout import BoxLayout
 
-class ScatterTextWidget(BoxLayout):
+from kivy.properties import ListProperty
+from kivy.graphics.vertex_instructions import (Rectangle, Ellipse, Line)
+from kivy.graphics.context_instructions import Color
+
+
+class InterScreenWidget(BoxLayout):
     pass
+
 
 class Inter00(App):
     def build(self):
-        return ScatterTextWidget()
+        return InterScreenWidget()
 
 if __name__ == "__main__":
 	Inter00().run()

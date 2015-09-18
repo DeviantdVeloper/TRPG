@@ -2,6 +2,7 @@
 #:import random random
 
 <InterScreenWidget>:
+	id: 'screen'
 	orientation: 'vertical'
 	canvas.before:
 		Color:
@@ -54,11 +55,13 @@
 					Rectangle:
 						pos: self.pos
 						size: self.size
-				Label:
-					text: 'stats'
-					font_size: 45
-					color: 1,1,1,1
-					size: self.texture_size
+				StatBlockWidget:
+				StatBlockWidget:
+				StatBlockWidget:
+				StatBlockWidget:
+				BoxLayout:
+					size_hint: None, None
+					size: statsBox.size[0], 20
 			BoxLayout:
 				id: graphicsBox
 				size_hint: None, None
@@ -93,11 +96,8 @@
 					Rectangle:
 						pos: self.pos
 						size: self.size
-				Label:
-					text: 'content'
-					font_size: 45
-					color: 0,0,0,1
-					size: self.texture_size
+				ContentBlockWidget:
+					id: 'CONTENT'
 			BoxLayout:
 				id: buttonsBox
 				size_hint: None, None
@@ -109,8 +109,55 @@
 					Rectangle:
 						pos: self.pos
 						size: self.size
-				Label:
-					text: 'buttons'
-					font_size: 45
-					color: 1,1,1,1
-					size: self.texture_size
+				ButtonBlockWidget:
+					id: 'BUTTONS'
+
+<StatBlockWidget>
+	orientation: 'vertical'
+	size_hint: None, None
+	size: root.size[0], 75
+	canvas:
+		Color:
+			rgba: 1,1,1,1
+		Rectangle:
+			pos: self.pos
+			size: 175, 25
+	Label:
+		id: statLabel
+		text: 'stat'
+		font_size: 25
+		color: 1,1,1,1
+		size: self.texture_size
+
+<ContentBlockWidget>
+	id: 'CONTENT'
+	orientation: 'vertical'
+	canvas:
+		Color:
+			rgba: 1,1,1,1
+		Rectangle:
+			pos: self.pos
+			size: self.size
+	Label:
+		id: 'content_Label'
+		text: "Here be content. Make it scrollable pls."
+		font_size: 15
+		color: 0,0,0,1
+		size: self.texture_size
+
+<ButtonBlockWidget>
+	id: 'BUTTONS'
+	orientation: 'horizontal'
+	id: 'button_block'
+	canvas:
+		Color:
+			rgba: 0,0,0,1
+		Rectangle:
+			pos: self.pos
+			size: self.size
+	Button:
+		text: 'Button'
+		font_size: 15
+		size_hint: None, None
+		size: 85, 30
+		color: 1,1,1,1

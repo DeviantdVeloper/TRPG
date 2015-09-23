@@ -97,7 +97,8 @@
 						pos: self.pos
 						size: self.size
 				ContentBlockWidget:
-					id: 'CONTENT'
+					id: CONTENT
+					text: 'words and '
 			BoxLayout:
 				id: buttonsBox
 				size_hint: None, None
@@ -110,7 +111,11 @@
 						pos: self.pos
 						size: self.size
 				ButtonBlockWidget:
-					id: 'BUTTONS'
+					id: BUTTONS
+					ActionButton:
+						id: btn
+						text: 'BuToN'
+						on_press: root.BtnHit()
 
 <StatBlockWidget>
 	orientation: 'vertical'
@@ -123,41 +128,38 @@
 			pos: self.pos
 			size: 175, 25
 	Label:
-		id: statLabel
 		text: 'stat'
 		font_size: 25
 		color: 1,1,1,1
 		size: self.texture_size
 
 <ContentBlockWidget>
-	id: 'CONTENT'
-	orientation: 'vertical'
-	canvas:
-		Color:
-			rgba: 1,1,1,1
-		Rectangle:
-			pos: self.pos
-			size: self.size
+	id: CONTENT
 	Label:
-		id: 'content_Label'
-		text: "Here be content. Make it scrollable pls."
+		text: CONTENT.text
+		text_size: self.width, None
+		size_hint_y: None
+		height: self.texture_size[1]
 		font_size: 15
 		color: 0,0,0,1
 		size: self.texture_size
 
 <ButtonBlockWidget>
-	id: 'BUTTONS'
-	orientation: 'horizontal'
-	id: 'button_block'
 	canvas:
 		Color:
 			rgba: 0,0,0,1
 		Rectangle:
 			pos: self.pos
 			size: self.size
-	Button:
-		text: 'Button'
-		font_size: 15
-		size_hint: None, None
-		size: 85, 30
-		color: 1,1,1,1
+
+<ActionButton>
+	canvas.before:
+		Color:
+			rgba: 0.5,0.5,0.5,1
+		Rectangle:
+			pos: self.pos
+			size: self.size
+	font_size: 15
+	size_hint: None, None
+	size: 85, 30
+	color: 1,1,1,1
